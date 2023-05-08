@@ -3,10 +3,7 @@ package com.example.glovo.controller;
 import com.example.glovo.model.Order;
 import com.example.glovo.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -30,4 +27,16 @@ public class OrderController {
     public Order getById(@PathVariable int id) {
         return orderService.get(id);
     }
+
+    @PostMapping
+    public Order save(@RequestBody Order order ) {
+        return orderService.save(order);
+    }
+
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable int id){
+        orderService.delete(id);
+    }
+
+
 }
