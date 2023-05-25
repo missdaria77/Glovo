@@ -81,5 +81,13 @@ public class OrderServiceTest {
         Assertions.assertEquals(testOrder.getDate(), order.getDate());
     }
 
+    @Test
+    public void deleteOrderTest() {
+        OrderEntity testOrder = OrderEntity.builder().id(1).cost(5).date("05/05/2004").build();
+        OrderService orderService = new OrderService(orderRepository, productRepository);
+        orderService.delete(testOrder.getId());
+        Mockito.verify(orderRepository).deleteById(testOrder.getId());
+    }
+
 
 }
